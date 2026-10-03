@@ -12,3 +12,5 @@ web3-functions/rebalance/.tmp/
 web3-functions/rebalance/userArgs.json
 web3-functions/rebalance/storage.json
 web3-functions/rebalance/log.json
+offchain/binance-hedge/node_modules/
+offchain/binance-hedge/dist/

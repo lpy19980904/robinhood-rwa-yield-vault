@@ -4,6 +4,12 @@ Foundry project for an ERC-4626 USDC vault whose share token is **eVault-USDC**.
 
 The code is an integration-ready scaffold, **not a production deployment**. No Robinhood Chain USDC contract, RWA token, venue/router, staking pool, perp venue, oracle, or Gelato caller address was supplied, so no venue adapter or address is invented here. External adapters and metric feeds must be implemented and reviewed before assets are deposited.
 
+## Selected integration direction: Robinhood Chain spot + Binance equity perps
+
+The selected development architecture pairs Robinhood Chain spot holdings with Binance equity perpetuals for the confirmed symbols `AAPLUSDT`, `NVDAUSDT`, `AMZNUSDT`, `AVGOUSDT`, and `QQQUSDT`. The separate `offchain/binance-hedge` TypeScript package is a deterministic, offline-first **dry-run planner only**. It is not called by a keeper and has no Binance order-submission, signing, or order-management path.
+
+Binance collateral, account identity, balances, positions, and PnL remain external to and uncontrolled by the Robinhood vault. ERC-4626 `totalAssets()` must not include Binance balances or exchange PnL without a separate trusted identity, NAV, freshness, and oracle/reporting design. The on-chain `rebalance()` only rebalances configured USDC strategy adapters; it does not execute the off-chain Binance plans. The separate Arcus testnet prototype below is not part of this selected architecture.
+
 **Arcus status:** the separate `web3-functions/arcus-testnet` module is a **TESTNET / NON-PRODUCTION prototype only**. It defaults to offline dry-run, accepts only `https://api.testnet.arcus.xyz`, and cannot route orders to Arcus mainnet. It is not connected to the Solidity vault and does not use Lighter.
 
 ## Project layout
@@ -18,6 +24,7 @@ script/DeployRwaVault.s.sol                Parameterized Foundry deployment
 web3-functions/rebalance/index.ts          Gelato APY/funding evaluator and calldata builder
 web3-functions/rebalance/schema.json       Gelato function configuration schema
 web3-functions/arcus-testnet/               Separate Arcus TESTNET-only order prototype
+offchain/binance-hedge/                     Separate offline Binance equity-perp hedge planner
 config-robinhood.md                        Mainnet/testnet network parameters
 ```
 
@@ -57,6 +64,7 @@ forge build
 forge test -vvv
 cd web3-functions/rebalance && npm install && npm run typecheck && npm test
 cd ../arcus-testnet && npm install && npm run typecheck && npm test && npm run build
+cd ../../offchain/binance-hedge && npm install && npm run typecheck && npm test
 ```
 
 The tests use a six-decimal mock USDC and deterministic in-memory adapters. They do not fork Robinhood Chain or verify live venue integrations.

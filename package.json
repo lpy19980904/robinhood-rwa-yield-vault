@@ -7,6 +7,8 @@
     "solidity:build": "forge build",
     "solidity:test": "forge test -vvv",
     "w3f:typecheck": "npm --prefix web3-functions/rebalance run typecheck",
-    "w3f:test": "npm --prefix web3-functions/rebalance run test"
+    "w3f:test": "npm --prefix web3-functions/rebalance run test",
+    "binance-hedge:typecheck": "npm --prefix offchain/binance-hedge run typecheck",
+    "binance-hedge:test": "npm --prefix offchain/binance-hedge run test"
   }
 }
