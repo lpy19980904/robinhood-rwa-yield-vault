@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+out/
+cache/
+lib/
+node_modules/
+web3-functions/rebalance/node_modules/
+web3-functions/rebalance/dist/
+web3-functions/arcus-testnet/dist/
+web3-functions/rebalance/.tmp/
+web3-functions/rebalance/userArgs.json
+web3-functions/rebalance/storage.json
+web3-functions/rebalance/log.json

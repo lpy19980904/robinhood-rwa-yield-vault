@@ -1,0 +1,21 @@
+{
+  "vaultAddress": "0x0000000000000000000000000000000000000000",
+  "metricsAddress": "0x0000000000000000000000000000000000000000",
+  "keeperAddress": "0x0000000000000000000000000000000000000000",
+  "chainId": 46630,
+  "yieldBps": 6000,
+  "perpBps": 2000,
+  "minPortfolioApyBps": 0,
+  "baseSlippageBps": 50,
+  "maxSlippageBps": 500,
+  "volatilityFactorBps": 10000,
+  "minimumAllocationDriftBps": 100,
+  "maxGasPriceGwei": 100,
+  "gasLimitBufferBps": 12000,
+  "maxGasLimit": 1500000,
+  "deadlineSeconds": 300,
+  "rpcTimeoutMs": 2500,
+  "maxFundingAbsBpsPerDay": 100,
+  "maxStakedApyBps": 100000,
+  "rpcUrls": []
+}

@@ -1,0 +1,19 @@
+{
+  "name": "rwa-vault-rebalance-w3f",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "simulate:testnet": "w3f test index.ts --chain-id=46630"
+  },
+  "dependencies": {
+    "@ethersproject/abi": "^5.7.0",
+    "@gelatonetwork/web3-functions-sdk": "2.4.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

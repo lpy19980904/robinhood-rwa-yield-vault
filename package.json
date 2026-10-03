@@ -1,0 +1,12 @@
+{
+  "name": "rwa-vault-usdc",
+  "private": true,
+  "version": "0.1.0",
+  "description": "ERC-4626 USDC vault with keeper-gated RWA yield and 1x short perp adapters",
+  "scripts": {
+    "solidity:build": "forge build",
+    "solidity:test": "forge test -vvv",
+    "w3f:typecheck": "npm --prefix web3-functions/rebalance run typecheck",
+    "w3f:test": "npm --prefix web3-functions/rebalance run test"
+  }
+}

@@ -1,0 +1,24 @@
+[profile.default]
+src = "src"
+test = "test"
+out = "out"
+libs = ["lib"]
+solc_version = "0.8.24"
+auto_detect_solc = false
+optimizer = true
+optimizer_runs = 10_000
+via_ir = false
+bytecode_hash = "none"
+
+remappings = [
+  "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+  "forge-std/=lib/forge-std/src/"
+]
+
+[rpc_endpoints]
+robinhood_mainnet = "${RH_RPC_URL}"
+robinhood_testnet = "${RH_TESTNET_RPC_URL}"
+
+[etherscan]
+robinhood_mainnet = { key = "empty", url = "https://robinhoodchain.blockscout.com/api/" }
+robinhood_testnet = { key = "empty", url = "https://explorer.testnet.chain.robinhood.com/api/" }
